@@ -1,0 +1,11 @@
+export const demoNotifcation = [
+    { name: "Ahmad", detail: "Use simple and straightforward language that is easy for your audience to understand. Avoid jargon, abbreviations, or slang that could potentially confuse your reader.", time: "2 hours" },
+    { name: "Ahmad", detail: "Use simple and straightforward language that is easy for your audience to understand. Avoid jargon, abbreviations, or slang that could potentially confuse your reader.", time: "4 hours" },
+    { name: "Ali", detail: "Use simple and straightforward language that is easy for your audience to understand. Avoid jargon, abbreviations, or slang that could potentially confuse your reader.", time: "10 hours" },
+    { name: "Muzamil", detail: "Use simple and straightforward language that is easy for your audience to understand. Avoid jargon, abbreviations, or slang that could potentially confuse your reader.", time: "14 hours" },
+    { name: "Bilal", detail: "Use simple and straightforward language that is easy for your audience to understand. Avoid jargon, abbreviations, or slang that could potentially confuse your reader.", time: "2 days" },
+    { name: "Shaheeer", detail: "Use simple and straightforward language that is easy for your audience to understand. Avoid jargon, abbreviations, or slang that could potentially confuse your reader.", time: "7 days" },
+    { name: "Adil", detail: "Use simple and straightforward language that is easy for your audience to understand. Avoid jargon, abbreviations, or slang that could potentially confuse your reader.", time: "8 days" },
+    { name: "Waleed", detail: "Use simple and straightforward language that is easy for your audience to understand. Avoid jargon, abbreviations, or slang that could potentially confuse your reader.", time: "14 days" },
+    { name: "Anas", detail: "Use simple and straightforward language that is easy for your audience to understand. Avoid jargon, abbreviations, or slang that could potentially confuse your reader.", time: "15 days" }
+]
