@@ -25,13 +25,13 @@ function LandingPage() {
       let obj = { email: values.email }
       const { ref } = queryParams
       if (ref) { obj = { ...obj, referance: ref } }
-      const response = await axios.post('https://job-board-backend-one.vercel.app/promotion/sign-up', obj);
+      const response = await axios.post('https://job-board-backend-delta.vercel.app/promotion/sign-up', obj);
       console.log('Response:', response);
       const { data } = response;
       if (data.statusCode === 200) {
         notifySuccess(data.message)
         // navigate(`/monitoring/${data.data}`)
-        navigate("/emailverification")
+        navigate("/emailverification-permotion")
       }
     }
     catch (error) {
@@ -46,13 +46,16 @@ function LandingPage() {
       <div className='outer_cont'>
         <div className='inner_cont'>
 
-          <div className='flex justify-center items-center w-[50%] p-[10px] '>
+          <div className='section11 flex justify-center items-center w-[50%] p-[10px]'>
             <img src='/assets/svg/pic.svg' className='' />
           </div>
-
           <div className='section2  w-[50%] p-[40px]'>
+            <div className='Login-Button'>
+              <button onClick={() => navigate("/login")}>Log In</button>
+              <button onClick={() => navigate("/register")}>Sign Up</button>
+            </div>
             <div className='logo-align flex items-center gap-[10px] justify-center mb-[60px]'>
-              <img src="/assets/weblogo.svg" alt="" className='h-[70px] landing-logo' />
+              <img src="/assets/svg/weblogo.svg" alt="" className='h-[70px] landing-logo' />
               <span className='text-[28px] font-semibold landing-logo-text'>Qruil</span>
             </div>
             <h1 className='text-[36px] landing-heading font-semibold'>Job Applications should <span style={{ color: '#FF5733' }}>NOT</span> be<br />a full-time job</h1>
@@ -73,8 +76,8 @@ function LandingPage() {
                 />
                 <button className='cta landing-cta text-[14px] h-[50px] w-[25%] bg-[#EF941F] m-[0px] px-[10px] text-[white] shadow1 rounded-r-[25px]' type="submit">
                   {loading ?
-                    <Spinner/>
-                    // <span className="loading"></span>
+                    // <Spinner/>
+                    <span className="loading"></span>
                     : 'Join the Beta Now'}
                 </button>
               </Form>

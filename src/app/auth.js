@@ -6,7 +6,7 @@ const checkAuth = () => {
   const status = localStorage.getItem("Status");
   const user = USER_ROLE[ROLE];
   
-  const PUBLIC_ROUTES = ["login", "forgot-password", "register", "EmailVerification", "new-password"];
+  const PUBLIC_ROUTES = ["login", "forgot-password", "register", "EmailVerification", "new-password", "emailverification-permotion", "landing"];
   
   const userType = {
     SEEKER: 'seeker',

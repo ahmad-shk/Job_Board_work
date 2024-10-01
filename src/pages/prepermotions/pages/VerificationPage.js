@@ -20,7 +20,7 @@ const VerificationPage = () => {
   const getVerify = async (params) => {
     setLoading(true)
     try {
-      const res = await axios.put(`https://job-board-backend-one.vercel.app/promotion/email-varification/${params.ref}`)
+      const res = await axios.put(`${process.env.REACT_APP_API_URL}/promotion/email-varification/${params.ref}`)
       const { data } = res
       if (data.success) {
         setSuccess(true)
@@ -37,7 +37,7 @@ const VerificationPage = () => {
     <div className="flex justify-center h-[100vh] bg-[#FEF5E6]  -flex-col">
       <div className="min-h-[100vh] -bg-[#FEF5E6] pt-[40px] flex flex-col items-center">
         <div className="h-[300px] w-[300px] bg-[#EF941F] rounded-[50%] relative overflow-hidden mt-[80px] thankyou-img-wrapper ">
-          <img src="/assets/thankyouicon.svg" alt="" className="h-[100%] thankyou-img relative" />
+          <img src="/assets/svg/thankyouicon.svg" alt="" className="h-[100%] thankyou-img relative" />
           <div className="bg-[#EF941F] h-[30px] w-[300px] absolute bottom-[2px] right-[0px]"></div>
         </div>
         <p className="thankyou-text mt-[40px] text-[25px] font-semibold">

@@ -53,7 +53,7 @@ function App() {
           <Route path="/EmailVerification" element={<Email />} />
           <Route path="/employer/LogOut" element={<LogOut />} />
           <Route path="/landing" element={<LandingPage />} />
-          <Route path="/emailverification" element={<VerificationPage/>} />
+          <Route path="/emailverification-permotion" element={<VerificationPage/>} />
 
 
           {/* <Route path="/under-varification" element={<UnderVarification />} /> */}
