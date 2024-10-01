@@ -11,7 +11,7 @@ function MyResume() {
    const [percentage, setPersentage] = useState(0)  
 
    const { profileAnalyticsData } = useSelector(state => state.profile)
-   const { educationTraining, personalInformation, portfolio, skills, work } = profileAnalyticsData || {}
+   const { educationTraining, personalInformation, portfolio, skills, work, questions } = profileAnalyticsData || {}
 
    const dispatch = useDispatch()
    useEffect(() => {
@@ -47,10 +47,13 @@ function MyResume() {
    calculateTotalPersentage2()
   }, [profileAnalyticsData])
 
+
+  console.log("----------->",portfolio)
+
    return (
       <div className='bg-white rounded-xl  p-[30px]'>
          <h2 className='text-[25px] font-semibold mb-4 h-8'>
-            My Resume
+            My Analytics
          </h2>
          <div className='resume-upper w-[100%]  bg-[] m-auto rounded flex '>
             <div className='resume-upper-left w-[100%] h-[] bg-[] '>
@@ -145,17 +148,30 @@ function MyResume() {
                      </span>
                   </div>
 
+                  <div className='flex justify-start my-[20px]'>
+                     <span>
+                        {
+                           questions?.isCompleted ?
+                              <img src="/assets/images/resume-info-icon-success.svg" alt="" className='w-[25px]' />
+                              :
+                              <img src="/assets/images/resume-info-icon.svg" alt="" className='w-[25px]' />
+                        }
+                     </span>
+                     <span className='ml-[10px]'>
+                        <p className='font-semibold text-[18px]'>{questions?.isCompleted ? 'Your questions information is Completed' : "Complete your questions"}</p>
+
+                        {/* <p>Add your demographics details</p> */}
+                     </span>
+                  </div>
+
                </div>
 
                <div className='w-[100%] p-2 h-[95px] flex flex-col items-center'>
                   <button className='block w-[45%] h-[40px] bg-[#FFCB05] rounded-xl mt-2 font-semibold'
-                     onClick={() => { navigate('/profile') }}
+                     onClick={() => { navigate('/seeker/profile') }}
                   >
                      Edit Profile
                   </button>
-                  <a href='#' className='mt-2 text-[#02A2FF]'>
-                     edit about a month ago
-                  </a>
                </div>
             </div>
 
@@ -166,6 +182,8 @@ function MyResume() {
             <div className=' font-semibold rounded-xl border border-slate-200 py-2'><h4 className='text-center text-xl h-14 overflow-hidden'>Education & Training</h4><div className='flex justify-center items-center'><MiniDoughnut color={"#67A381"} doughnutData={educationTraining} /> </div></div>
             <div className=' font-semibold rounded-xl border border-slate-200 py-2'><h4 className='text-center text-xl h-14 overflow-hidden'>Skills</h4><div className=' flex justify-center items-center'><MiniDoughnut doughnutData={skills} /> </div></div>
             <div className=' font-semibold rounded-xl border border-slate-200 py-2'><h4 className='text-center text-xl h-14 overflow-hidden'>Portfolio</h4><div className=' flex justify-center items-center'><MiniDoughnut color={"#67A381"} doughnutData={portfolio} /> </div></div>
+            <div className=' font-semibold rounded-xl border border-slate-200 py-2'><h4 className='text-center text-xl h-14 overflow-hidden'>Question/Answer</h4><div className=' flex justify-center items-center'><MiniDoughnut  doughnutData={questions} /> </div></div>
+
 
          </div>
       </div>

@@ -22,41 +22,41 @@ const submenuIconClasses = `h-5 w-5`
 const routes = [
 
   {
-    path: '/dashboard',
+    path: '/seeker/dashboard',
     icon: <Squares2X2Icon className={iconClasses}/>, 
     name: 'Dashboard',
   },
   
   
   // {
-  //   path: '/job-listing', // url
+  //   path: '/seeker/job-listing', // url
   //   icon: <BriefcaseIcon className={iconClasses}/>, // icon component
   //   name: 'Job board', // name that appear in Sidebar
   // },
   
   {
-    path: '/profile', // url
+    path: '/seeker/profile', // url
     icon: <UserIcon className={iconClasses}/>, // icon component
-    name: 'Profile', // name that appear in Sidebar
+    name: 'Application', // name that appear in Sidebar
   },
 
   {
-    path: '/job-search', // url
+    path: '/seeker/job-search', // url
     icon: <MagnifyingGlassIcon className={iconClasses}/>, // icon component
     name: 'Job Search', // name that appear in Sidebar
   },
   {
-    path: '/job-listing', // url
+    path: '/seeker/job-listing', // url
     icon: <BriefcaseIcon className={iconClasses}/>, // icon component
     name: 'Job board', // name that appear in Sidebar
   },
   // {
-  //   path: '/profilepreview',
+  //   path: '/seeker/profilepreview',
   //   icon: <Squares2X2Icon className={iconClasses}/>, 
   //   name: 'Profile Preview',
   // },
   // {
-  //   path: '/job-search', // url
+  //   path: '/seeker/job-search', // url
   //   icon: <MagnifyingGlassIcon className={iconClasses}/>, // icon component
   //   name: 'Job Search', // name that appear in Sidebar
   // },
@@ -67,29 +67,29 @@ const routes = [
   //   name: 'Jobs', // name that appear in Sidebar
   //   submenu : [
   //     {
-  //       path: '/job-search', //url
+  //       path: '/seeker/job-search', //url
   //       icon: <MagnifyingGlassIcon className={submenuIconClasses}/>, // icon component
   //       name: 'Job Search', // name that appear in Sidebar
   //     },
   //     {
-  //       path: '/job-listing', //url
+  //       path: '/seeker/job-listing', //url
   //       icon: <BriefcaseIcon className={submenuIconClasses}/>, // icon component
   //       name: 'Job board', // name that appear in Sidebar
   //     }
   //   ]
   // },
 
-  {
-    path: '/myresume', // url
+{
+    path: '/seeker/myresume', // url
     icon: <ChartPieIcon className={iconClasses}/>, // icon component
-    name: 'Resume Analytics', // name that appear in Sidebar
+    name: 'Analytics', // name that appear in Sidebar
   },
 
-  {
-    path: '/analytics', // url
-    icon: <ChartBarIcon className={iconClasses}/>, // icon component
-    name: 'Insights', // name that appear in Sidebar
-  },
+//   {
+//     path: '/seeker/analytics', // url
+//     icon: <ChartBarIcon className={iconClasses}/>, // icon component
+//     name: '  Insights', // name that appear in Sidebar
+//   },
 
   // {
   //   path: '', //no url needed as this has submenu
@@ -97,57 +97,57 @@ const routes = [
   //   name: 'Analytics', // name that appear in Sidebar
   //   submenu : [
   //     {
-  //       path: '/myresume', //url
+  //       path: '/seeker/myresume', //url
   //       icon: <MagnifyingGlassIcon className={submenuIconClasses}/>, // icon component
   //       name: 'Resume', // name that appear in Sidebar
   //     },
   //     {
-  //       path: '/analytics', //url
+  //       path: '/seeker/analytics', //url
   //       icon: <BriefcaseIcon className={submenuIconClasses}/>, // icon component
   //       name: 'Insights', // name that appear in Sidebar
   //     }
   //   ]
   // },
-  // {
-  //   path: '/notifications', // url
-  //   icon: <BellIcon className={iconClasses}/>, // icon component
-  //   name: 'Notification', // name that appear in Sidebar
-  // },
   {
-    path: '/mynetwork',
-    icon: <UserGroupIcon className={iconClasses}/>, 
-    name: 'My Networks',
+    path: '/seeker/notifications', // url
+    icon: <BellIcon className={iconClasses}/>, // icon component
+    name: 'Notification', // name that appear in Sidebar
   },
   // {
-  //   path: '/myresume',
+  //   path: '/seeker/mynetwork',
+  //   icon: <UserGroupIcon className={iconClasses}/>, 
+  //   name: 'My Network',
+  // },
+  // {
+  //   path: '/seeker/myresume',
   //   icon: <Squares2X2Icon className={iconClasses}/>, 
   //   name: 'My Resume',
   // },
   // {
-  //   path: '/analytics',
+  //   path: '/seeker/analytics',
   //   icon: <Squares2X2Icon className={iconClasses}/>, 
   //   name: 'Analytics',
   // },
-  {
-    path: '/notifications',
-    icon: <BellIcon className={iconClasses}/>, 
-    name: 'Notifications',
-  },
-  {
-    path: '/news',
-    icon: <NewspaperIcon className={iconClasses}/>, 
-    name: 'News',
-  },
-  {
-    path: '/events', // url
-    icon: <CalendarDaysIcon className={iconClasses}/>, // icon component
-    name: 'Events', // name that appear in Sidebar
-  },
+  // {
+  //   path: '/seeker/notifications',
+  //   icon: <BellIcon className={iconClasses}/>, 
+  //   name: 'Notifications',
+  // },
+  // // {
+  // //   path: '/seeker/news',
+  // //   icon: <NewspaperIcon className={iconClasses}/>, 
+  // //   name: 'News',
+  // // },
+  // {
+  //   path: '/seeker/events', // url
+  //   icon: <CalendarDaysIcon className={iconClasses}/>, // icon component
+  //   name: 'Events', // name that appear in Sidebar
+  // },
 
   {
-    path: '/setting-profile', // url
+    path: '/seeker/setting-profile', // url
     icon: <Cog6ToothIcon className={iconClasses}/>, // icon component
-    name: 'Setting', // name that appear in Sidebar
+    name: 'Settings', // name that appear in Sidebar
   },
 
   // {
@@ -156,27 +156,27 @@ const routes = [
   //   name: 'Pages', // name that appear in Sidebar
   //   submenu : [
   //     {
-  //       path: '/login',
+  //       path: '/seeker/login',
   //       icon: <ArrowRightOnRectangleIcon className={submenuIconClasses}/>,
   //       name: 'Login',
   //     },
   //     {
-  //       path: '/register', //url
+  //       path: '/seeker/register', //url
   //       icon: <UserIcon className={submenuIconClasses}/>, // icon component
   //       name: 'Register', // name that appear in Sidebar
   //     },
   //     {
-  //       path: '/forgot-password',
+  //       path: '/seeker/forgot-password',
   //       icon: <KeyIcon className={submenuIconClasses}/>,
   //       name: 'Forgot Password',
   //     },
   //     {
-  //       path: '/blank',
+  //       path: '/seeker/blank',
   //       icon: <DocumentIcon className={submenuIconClasses}/>,
   //       name: 'Blank Page',
   //     },
   //     {
-  //       path: '/404',
+  //       path: '/seeker/404',
   //       icon: <ExclamationTriangleIcon className={submenuIconClasses}/>,
   //       name: '404',
   //     },
@@ -188,7 +188,7 @@ const routes = [
   //   name: 'Settings', // name that appear in Sidebar
   //   submenu : [
   //     {
-  //       path: '/settings-profile', //url
+  //       path: '/seeker/settings-profile', //url
   //       icon: <UserIcon className={submenuIconClasses}/>, // icon component
   //       name: 'Profile', // name that appear in Sidebar
   //     }

@@ -9,6 +9,8 @@ function EducationCards(props) {
                 <p className='font-18px font-semibold text-[24px]  mb-[5px]'>{props.name}</p>
                 <p className='font-15px text-[14px]'>{props.desc}</p>
                 <p className='font-15px text-[#B5B5B5] text-[14px]'> {props.date}</p>
+                {/* <p className='font-18px font-semibold text-[24px]  mb-[5px]'>{props.degree}</p> */}
+
             </div>
         </div>
         

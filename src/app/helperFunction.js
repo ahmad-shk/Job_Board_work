@@ -75,3 +75,15 @@ export const formatDate = (date, format = 'primry') => {
     }
     return moment(date).format('YYYY-DD-MM')
 };
+
+export const selectFieldValue = (date, key) => {
+    return date.find(item => item.value ===  key ?? date[0])
+};
+
+export const selectFieldValueDefault = (date, key) => {
+    return date.find(item => item.value ===  key) ?? ''
+};
+
+export const selectFieldLabelDefault = (date, key) => {
+    return date.find(item => item.label ===  key) ?? ''
+};

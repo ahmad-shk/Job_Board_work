@@ -89,7 +89,7 @@ const SearchJobLocation = () => {
             </span>
             <input
                 type="text"
-                placeholder="Germany" 
+                placeholder="Location" 
                 value={inputValue}
                 onChange={handleInputChange}
                 onFocus={toggleDropdown}

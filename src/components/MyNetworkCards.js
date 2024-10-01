@@ -81,9 +81,7 @@ function MyNetworkCards({ text, flag, text1, icon,name, desc, arrow, plus}) {
           </h2>
           <p className=' w-full h-16 mt-2 text-center'>
             {desc}
-          </p>
-        
-          
+          </p>  
               <button className='flex items-center justify-center text-[#02A2FF] font-semibold text-[18px] w-[70%] mt-4 h-10 border-[1px] border-[#02A2FF] rounded-xl transition-all'>
               <span ><img src={arrow} alt="" className='mx-[5px]' /></span>
               <span className='mx-[5px] text-[20px]'>{plus}</span>

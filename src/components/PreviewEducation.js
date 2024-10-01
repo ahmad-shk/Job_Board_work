@@ -18,6 +18,7 @@ function PreviewEducation({ educationTraining }) {
               name={item.nameOfCenter}
               desc={item.fieldOfStudy}
               date={`${formattedFrom} to ${formattedTo}`}
+              degree={item.degree}
             />
           );
         })}

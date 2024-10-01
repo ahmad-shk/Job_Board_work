@@ -20,6 +20,7 @@ const PersonalInformation = () => {
     const [collapse5, setCollapse5] = useState(true);
     const [collapse6, setCollapse6] = useState(true);
     const [collapse7, setCollapse7] = useState(true);
+    const [collapse8, setCollapse8] = useState(true);
     const [countryData, setCountryData] = useState([])
     const [tabData, setTabData] = useState()
     const { profilePagesData } = useSelector(state => state.profile)
@@ -36,40 +37,9 @@ const PersonalInformation = () => {
             });
 
     }, [])
-
-    const toggleCollapse = (collapseNumber) => {
-        switch (collapseNumber) {
-            case 1:
-                setCollapse1(!collapse1);
-                break;
-            case 2:
-                setCollapse2(!collapse2);
-                break;
-            case 3:
-                setCollapse3(!collapse3);
-                break;
-            case 4:
-                setCollapse4(!collapse4);
-                break;
-            case 5:
-                setCollapse5(!collapse5);
-                break;
-            case 6:
-                setCollapse6(!collapse6);
-                break;
-            case 7:
-                setCollapse7(!collapse7);
-                break;
-            default:
-                break;
-        }
-    };
-
-
-
     return (
         <div>
-            {personalInformation && Object.keys(personalInformation).length>0 && <PersonalInformationForm tabData={personalInformation} />}
+            {personalInformation && Object.keys(personalInformation).length > 0 && <PersonalInformationForm tabData={personalInformation} />}
         </div >
     )
 }

@@ -14,7 +14,7 @@ export const customStylesSelect = {
     indicatorsContainer: (provided, state) => ({
       ...provided,
       position: 'relative',
-      top: '0'
+      top: '0',
     }),
     control: (provided) => ({
       ...provided,
@@ -35,15 +35,18 @@ export const customStylesSelect = {
       ...provided,
       position: "absolute",
       zIndex: "990",
+      fontSize:'15px'
+
   
     }),
     singleValue: (provided) => ({
       ...provided,
-      color: "rgb(34, 41, 57)",
+      color: 'black',
     }),
     placeholder: (provided) => ({
       ...provided,
-      color: '#2E2D46',
+      color: 'grey',
+      fontSize:'15px'
     }),
   
 }

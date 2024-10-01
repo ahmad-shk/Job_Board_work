@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { getCall, postCall } from '../../app/axiosConfig';
 
 export const getJobListData = createAsyncThunk('/get/job', async (parms) => {
-	const response = await getCall('/jobs/listing', parms)
+	const response = await getCall('/jobs', parms)
 	return response;
 })
 
@@ -13,6 +13,7 @@ export const getSearchData = createAsyncThunk('/get/search', async (parms) => {
 
 export const getJobBoardData = createAsyncThunk('/get/board', async (parms) => {
 	const response = await getCall('/jobs/board', parms)
+	console.log("jobdetail",response.data)
 	return response;
 })
 

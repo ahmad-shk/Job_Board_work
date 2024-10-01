@@ -51,3 +51,15 @@ export const notifyWarning = (massage) => {
     progress: undefined,
   });
 };
+
+export const notifyStatus = (massage) => {
+  toast.success(`${massage}`, {
+    toastId: 'custom-toast-success-id',
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+  });
+};

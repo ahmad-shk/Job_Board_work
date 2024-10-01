@@ -9,17 +9,17 @@ import { postCall } from "../../app/axiosConfig";
 import { useDispatch } from 'react-redux'
 import { postProfileData } from "../../features/profile/profileSlice";
 import { notifySuccess } from "../../app/toaster";
+import { CountryDATA, usaCities, usaCitiesEnum, USStates } from "../../pages/employerProtected/JobConsts";
 let actionType = 'save'
 const Work1 = ({ collapse1, workIndexItem, workIndex, tabData }) => {
-
     const [loading, setLoading] = useState(false)
     const [loadingDelete, setLoadingDelete] = useState(false)
     const dispatch = useDispatch()
-    const [CountrydataForWorkPage, setCountrydataForWorkPage] = useState([]);
-
+    // const [CountrydataForWorkPage, setCountrydataForWorkPage] = useState([]);
     const initialValues = {
-        occupation: workIndexItem.occupation,
-        employeer: workIndexItem.employeer,
+        title: workIndexItem.title,
+        state: workIndexItem.state,
+        employer: workIndexItem.employer,
         city: workIndexItem.city,
         country: workIndexItem.country,
         fromYear: workIndexItem?.from ? workIndexItem.from.split('-')[0] : '',
@@ -31,11 +31,11 @@ const Work1 = ({ collapse1, workIndexItem, workIndex, tabData }) => {
         toYear: workIndexItem?.to ? workIndexItem.to.split('-')[0] : '',
         roleDescription: workIndexItem.roleDescription
     };
-
     const validationSchema = Yup.object().shape({
-        occupation: Yup.string().required('Required'),
-        employeer: Yup.string().required('Required'),
+        title: Yup.string().required('Required'),
+        employer: Yup.string().required('Required'),
         city: Yup.string().required('Required'),
+        state: Yup.string().required('Required'),
         country: Yup.string().required("Required"),
         fromMonth: Yup.string().required("Required"),
         fromDay: Yup.string().required("Required"),
@@ -49,6 +49,7 @@ const Work1 = ({ collapse1, workIndexItem, workIndex, tabData }) => {
 
     const formik = useFormik({
         initialValues,
+        enableReinitialize: true,
         validationSchema,
         onSubmit: async (values) => {
 
@@ -80,12 +81,11 @@ const Work1 = ({ collapse1, workIndexItem, workIndex, tabData }) => {
                 setLoading(true)
                 payload = [...payload, _newValue]
             }
-
             try {
                 dispatch(postProfileData({ work: payload })).unwrap().then(() => {
                     setLoading(false)
                     setLoadingDelete(false)
-                    notifySuccess('Work Update Successfully')
+                    notifySuccess(actionType === 'delete' ? 'Work delete successfully' : 'Work update successfully')
                 })
             } catch (e) {
                 console.log('error profile', e)
@@ -94,54 +94,100 @@ const Work1 = ({ collapse1, workIndexItem, workIndex, tabData }) => {
             }
         },
     });
-    useEffect(() => {
-        getCountryList()
-            .then((data) => {
-                setCountrydataForWorkPage(data)
-
-            })
-            .catch((error) => {
-                console.error("Error fetching country list:", error);
-            });
-    }, []);
 
     const { values, handleChange, handleSubmit, errors, touched, setFieldValue, getFieldProps } = formik;
-    const { fromMonth, fromDay, fromYear, toMonth, toDay, toYear, country, ongoing } = values
+    const { fromMonth, fromDay, fromYear, toMonth, toDay, toYear, country, state, ongoing, city } = values
+    const selectedOption = USStates.find((item) => item.value === values.state);
+    console.log(values,"777")
     return (
         <div>
             <form onSubmit={handleSubmit}>
-                <div className={`transition-all duration-300 ${collapse1 ? 'show' : 'hidden'}`}>
+                <div className={`transition-all duration-300 ${(tabData.length == 0 && collapse1 === undefined) ? 'show' : collapse1 ? 'show' : 'hidden'}`}>
 
                     <div className="section-1 mb-10">
 
                         <div className="grid w-full mb-5">
-                            <label className="mb-1">Occupation or position held {!values.occupation && <span className="text-[red]">*</span>}</label>
-                            <input type="text" name="occupation" value={values.occupation} onChange={handleChange} placeholder="Title of the Occupation" className="w-full text-[15px] text-[#000] px-[20px] py-[10px] rounded-[8px] outline-none border border-[#919191]  placeholder:text-[#2E2D46] focus:bg-[#F3F8FC]" />
-                            {touched.occupation && errors.occupation && <p className="text-red-500">{errors.occupation}</p>}
-                        </div>
-                        <div className="grid lg:w-6/12 mb-5">
-                            <label className="mb-1">Employeer {!values.employeer && <span className="text-[red]">*</span>}</label>
-                            <input type="text" name="employeer" value={values.employeer} onChange={handleChange} placeholder="Name of the Employeer" className="w-full text-[15px] text-[#000] px-[20px] py-[10px] rounded-[8px] outline-none border border-[#919191]  placeholder:text-[#2E2D46] focus:bg-[#F3F8FC]" />
-                            {touched.employeer && errors.employeer && <p className="text-red-500">{errors.employeer}</p>}
+                            <label className="mb-1 text-[15px]">Position held {!values.title && <span className="text-[red]">*</span>}</label>
+                            <input type="text" name="title" value={values.title} onChange={handleChange} placeholder="" className="w-full text-[15px] text-black px-[20px] py-[10px] rounded-[8px] outline-none border -border-[#919191]  placeholder:text-[#919191] focus:bg-[#F3F8FC]" />
+                            {touched.title && errors.title && <p className="text-red-500">{errors.title}</p>}
                         </div>
                         <div className="grid lg:grid-cols-2 gap-2 mb-5">
                             <div>
-                                <label className="-mb-1">City {!values.city && <span className="text-[red]">*</span>}</label>
-                                <input type="text" name="city" value={values.city} onChange={handleChange} placeholder="e.g. Paris" className="w-full text-[15px] text-[#000] px-[20px] py-[10px] rounded-[8px] outline-none border border-[#919191]  placeholder:text-[#2E2D46] focus:bg-[#F3F8FC]" />
+                                <label className="-mb-1 text-[15px]">Employer {!values.employer && <span className="text-[red]">*</span>}</label>
+                                <input type="text" name="employer" value={values.employer} onChange={handleChange} placeholder="" className="w-full text-[15px] text-black px-[20px] py-[10px] rounded-[8px] outline-none border -border-[#919191]  placeholder:text-[#919191] focus:bg-[#F3F8FC]" />
+                                {touched.employer && errors.employer && <p className="text-red-500">{errors.employer}</p>}
+                            </div>
+                            <div>
+                                <label className="mb-1 text-[15px]">State {!values.state && <span className="text-[red]">*</span>}</label>
+                                <Select
+                                    name="state"
+                                    styles={{
+                                        ...customStylesSelect,
+                                        placeholder: (provided) => ({
+                                            ...provided,
+                                            color: '#919191',
+                                            fontSize: '15px'
+                                        })
+                                    }
+                                    }
+                                    className="react-select"
+                                    classNamePrefix="select"
+                                    options={USStates}
+                                    isSearchable
+                                    placeholder={
+                                        values.state ? values.state : "Select"
+                                    }
+                                    value={USStates.find((item) => item.value === values?.state) || null}
+                                    onChange={(selectedOption) => { setFieldValue('state', selectedOption.value) }}
+                                />
+                                {touched.state && errors.state ? (<div className="text-red-500">{errors.state}</div>) : null}
+                            </div>
+                        </div>
+                        <div className="grid lg:grid-cols-2 gap-2 mb-5">
+                            <div>
+                                <label className="-mb-1 text-[15px]">City {!values.city && <span className="text-[red]">*</span>}</label>
+                                <Select
+                                    name="city"
+                                    styles={{
+                                        ...customStylesSelect,
+                                        placeholder: (provided) => ({
+                                            ...provided,
+                                            color: '#919191',
+                                            fontSize: '15px'
+                                        })
+                                    }
+                                    }
+                                    className="react-select"
+                                    classNamePrefix="select"
+                                    options={usaCities[values.state]}
+                                    isSearchable
+                                    placeholder={ values.city ? values.city : "Select"}
+                                    value={{ value: values.city, label: values.city } || null}
+                                    onChange={(selectedOption) => { setFieldValue('city', selectedOption.label) }}
+                                />
                                 {touched.city && errors.city && <p className="text-red-500">{errors.city}</p>}
                             </div>
                             <div>
-                                <label className="mb-1">Country {!values.country && <span className="text-[red]">*</span>}</label>
+                                <label className="mb-1 text-[15px]">Country {!values.country && <span className="text-[red]">*</span>}</label>
                                 <Select
                                     name="country"
-                                    styles={customStylesSelect}
+                                    styles={{
+                                        ...customStylesSelect,
+                                        placeholder: (provided) => ({
+                                            ...provided,
+                                            color: '#919191',
+                                            fontSize: '15px'
+                                        })
+                                    }
+                                    }
                                     className="react-select"
                                     classNamePrefix="select"
-                                    options={CountrydataForWorkPage}
+                                    options={CountryDATA}
                                     isSearchable
                                     placeholder="Select"
                                     defaultValue={country}
-                                    value={CountrydataForWorkPage.filter((item) => item.label === country)}
+                                    // value={CountryDATA.filter((item) => item.label === country)}
+                                    value={CountryDATA.find((item) => item.label === country) || null}
                                     onChange={(selectedOption) => { setFieldValue('country', selectedOption.label) }}
                                 />
 
@@ -152,11 +198,19 @@ const Work1 = ({ collapse1, workIndexItem, workIndex, tabData }) => {
                             <div className="flex gap-2 items-end">
                                 <div className="grid lg:grid-cols-2 gap-2 flex-1">
                                     <div>
-                                        <label className="mb-1">From{!fromDay && !fromMonth && !fromYear && <span className="text-[red]">*</span>}</label>
+                                        <label className="mb-1 text-[15px]">From{!fromDay && !fromMonth && !fromYear && <span className="text-[red]">*</span>}</label>
                                         <div className="grid lg:grid-cols-3 gap-2">
                                             <div>
                                                 <Select
-                                                    styles={customStylesSelect}
+                                                    styles={{
+                                                        ...customStylesSelect,
+                                                        placeholder: (provided) => ({
+                                                            ...provided,
+                                                            color: '#919191',
+                                                            fontSize: '15px'
+                                                        })
+                                                    }
+                                                    }
                                                     className="react-select"
                                                     classNamePrefix="select"
                                                     options={dateOfMMList}
@@ -174,7 +228,15 @@ const Work1 = ({ collapse1, workIndexItem, workIndex, tabData }) => {
                                             </div>
                                             <div>
                                                 <Select
-                                                    styles={customStylesSelect}
+                                                    styles={{
+                                                        ...customStylesSelect,
+                                                        placeholder: (provided) => ({
+                                                            ...provided,
+                                                            color: '#919191',
+                                                            fontSize: '15px'
+                                                        })
+                                                    }
+                                                    }
                                                     className="react-select"
                                                     classNamePrefix="select"
                                                     options={dateOfDDList}
@@ -191,7 +253,15 @@ const Work1 = ({ collapse1, workIndexItem, workIndex, tabData }) => {
                                             </div>
                                             <div>
                                                 <Select
-                                                    styles={customStylesSelect}
+                                                    styles={{
+                                                        ...customStylesSelect,
+                                                        placeholder: (provided) => ({
+                                                            ...provided,
+                                                            color: '#919191',
+                                                            fontSize: '15px'
+                                                        })
+                                                    }
+                                                    }
                                                     className="react-select"
                                                     classNamePrefix="select"
                                                     options={dateOfYYList}
@@ -211,12 +281,20 @@ const Work1 = ({ collapse1, workIndexItem, workIndex, tabData }) => {
 
                                     </div>
                                     <div>
-                                        <label className="mb-1">To {!ongoing && !toDay && !toMonth && !toYear && <span className="text-[red]">*</span>}</label>
+                                        <label className="mb-1 text-[15px]">To {!ongoing && !toDay && !toMonth && !toYear && <span className="text-[red]">*</span>}</label>
                                         <div className="grid grid-cols-3 gap-2">
 
                                             <div>
                                                 <Select
-                                                    styles={customStylesSelect}
+                                                    styles={{
+                                                        ...customStylesSelect,
+                                                        placeholder: (provided) => ({
+                                                            ...provided,
+                                                            color: '#919191',
+                                                            fontSize: '15px'
+                                                        })
+                                                    }
+                                                    }
                                                     className="react-select"
                                                     classNamePrefix="select"
                                                     options={dateOfMMList}
@@ -236,7 +314,15 @@ const Work1 = ({ collapse1, workIndexItem, workIndex, tabData }) => {
                                             </div>
                                             <div>
                                                 <Select
-                                                    styles={customStylesSelect}
+                                                    styles={{
+                                                        ...customStylesSelect,
+                                                        placeholder: (provided) => ({
+                                                            ...provided,
+                                                            color: '#919191',
+                                                            fontSize: '15px'
+                                                        })
+                                                    }
+                                                    }
                                                     className="react-select"
                                                     classNamePrefix="select"
                                                     options={dateOfDDList}
@@ -254,7 +340,15 @@ const Work1 = ({ collapse1, workIndexItem, workIndex, tabData }) => {
                                             </div>
                                             <div>
                                                 <Select
-                                                    styles={customStylesSelect}
+                                                    styles={{
+                                                        ...customStylesSelect,
+                                                        placeholder: (provided) => ({
+                                                            ...provided,
+                                                            color: '#919191',
+                                                            fontSize: '15px'
+                                                        })
+                                                    }
+                                                    }
                                                     className="react-select"
                                                     classNamePrefix="select"
                                                     options={dateOfYYList}
@@ -286,7 +380,7 @@ const Work1 = ({ collapse1, workIndexItem, workIndex, tabData }) => {
                                         {...getFieldProps('ongoing')}
                                     />
                                     <label
-                                        className="inline-block pl-[0.15rem] hover:cursor-pointer"
+                                        className="inline-block pl-[0.15rem] text-[15px] hover:cursor-pointer"
                                         htmlFor="flexSwitchCheckDefault"
                                     > Ongoing</label>
                                 </div>
@@ -296,14 +390,14 @@ const Work1 = ({ collapse1, workIndexItem, workIndex, tabData }) => {
                         <div className="section-2 mb-10">
                             <div className="px-0">
                                 <div className="mb-3">
-                                    <label className="mb-1">Role Description {!values.roleDescription && <span className="text-[red]">*</span>}</label>
+                                    <label className="mb-1 text-[15px]">Role Description {!values.roleDescription && <span className="text-[red]">*</span>}</label>
                                     {touched.roleDescription && errors.roleDescription && <p className="text-red-500">{errors.roleDescription}</p>}
                                     <textarea
                                         name="roleDescription"
                                         value={values.roleDescription}
                                         onChange={handleChange}
                                         placeholder="Role Description"
-                                        className="w-full bg-[#F4F8FB] text-[15px] text-[#000] px-[20px] py-[10px] rounded-[8px] outline-none border border-[#E4E4E4] resize-none h-[400px] placeholder:text-[#2E2D46] focus:bg-[#F3F8FC]"
+                                        className="w-full bg-[#F4F8FB] text-[15px] text-black px-[20px] py-[10px] rounded-[8px] outline-none border border-[#E4E4E4] resize-none h-[200px] placeholder:text-[#919191] focus:bg-[#F3F8FC]"
                                     ></textarea>
 
                                 </div>
@@ -319,21 +413,21 @@ const Work1 = ({ collapse1, workIndexItem, workIndex, tabData }) => {
                 {
                     workIndex < tabData.length ?
                         <>{collapse1 && <>
-                            <button type="submit" className="font-medium bg-[#FFCB05] px-[40px] text-[16px] rounded-[0px] py-[12px] border-0 mr-2" onClick={() => {
+                            <button type="submit" className="mb-[20px] font-medium bg-[#FFCB05] px-[40px] text-[15px] rounded-[0px] py-[12px] border-0 mr-2" onClick={() => {
                                 actionType = 'update'
                                 handleSubmit()
-                            }}>{loading ? <span className="loading"></span> : 'Update'}</button>
-                            <button type="submit" className="font-medium bg-[#FFCB05] px-[40px] text-[16px] rounded-[0px] py-[12px] border-0 mr-2" onClick={() => {
+                            }}>{loading ? <span className="loading text-[15px]"></span> : 'Update'}</button>
+                            <button type="submit" className=" mb-[20px] font-medium bg-[#FFCB05] px-[40px] text-[15px] rounded-[0px] py-[12px] border-0 mr-2" onClick={() => {
                                 actionType = 'delete'
                                 handleSubmit()
                             }}>{loadingDelete ? <span className="loading"></span> : 'Delete'}</button>
                         </>}
                         </>
                         :
-                        <button type="submit" className="font-medium bg-[#FFCB05] px-[40px] text-[16px] rounded-[0px] py-[12px] border-0" onClick={() => {
+                        <button type="submit" className="text-[15px] font-medium bg-[#FFCB05] px-[40px] text-[16px] rounded-[0px] py-[12px] border-0" onClick={() => {
                             actionType = 'save'
                             handleSubmit()
-                        }}>{loading ? <span className="loading"></span> : 'Save'}</button>
+                        }}>{loading ? <span className="loading text-[15px]"></span> : 'Save'}</button>
                 }
             </div>
         </div>

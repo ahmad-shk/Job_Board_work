@@ -15,7 +15,6 @@ function ProfilePreview() {
 
   const { profilePagesData } = useSelector(state => state.profile)
   const { skills,work,educationTraining,personalInformation } = profilePagesData
-
   return (
     <>
     

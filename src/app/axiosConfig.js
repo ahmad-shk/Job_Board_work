@@ -9,15 +9,16 @@ const Instance = axios.create({ baseURL: base_url });
 Instance.defaults.headers.common["Content-Type"] = "application/json";
 Instance.defaults.headers.common["Accept"] = "application/json";
 Instance.defaults.headers.common["Authorization"] = token ? `Bearer ${token}` : null
-console.log('Token::::', token)
 
 export const displayError = (err) => {
-    const { status, config } = err.response;
+    console.log('ERROR:::', err)
+    const { status, config, data } = err.response;
+
     if (status > 500) {
         notifyError('Something has gone wrong')
     } else if (status == 400) {
-        notifyError('Invalid request')
-    } else if (status == 401 || status == 500) {
+        notifyError(data?.message ?? 'Invalid request')
+    } else if (status == 401 ) {
         if (config.url == "/login" || config.url == '/signup') {
             notifyError('Invalid Credentials')
         } else {
@@ -32,7 +33,7 @@ export const displayError = (err) => {
     } else if (status == 403) {
         notifyError('You don’t have permission to access')
     } else if (status == 404) {
-        notifyError('404 Not Found')
+        notifyError(data?.message || '404 Not Found')
     } else if (status == 405) {
         notifyError('Method not Allowed')
     } else if (status == 409) {
@@ -44,7 +45,7 @@ export const displayError = (err) => {
     } else if (status == 429) {
         notifyError('Too Many Requests')
     } else {
-        notifyError('Invalid request')
+        // notifyError('Invalid request')
     }
 }
 
@@ -88,6 +89,9 @@ export const postCall = (url, body) => {
 
 export const putCall = (url, body) => {
     return Instance.put(url, body)
+}
+export const patchCall = (url, body) => {
+    return Instance.patch(url, body)
 }
 
 export const delCall = (url) => {

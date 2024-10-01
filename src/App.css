@@ -1,7 +1,10 @@
 .App {
   text-align: center;
 }
-
+.ffff{
+  max-height: 50px !important;
+  min-height: 50px !important;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -9,6 +12,7 @@
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+    
   }
 }
 .App-header {
@@ -18,10 +22,40 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
+/* .rrr::-webkit-scrollbar{
+  width: 0px !important;
+  height: 0px !important;
+  visibility: hidden !important;
+  display: none !important;
+  scrollbar-width: 2px !important;
+} */
+.scrollnone::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+.scrollnone {
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none;  /* For Internet Explorer and Edge */
+}
+.scrollnone::-ms-scrollbar {
+  width: 0px;
+  height: 0px;
+}
 .App-link {
   color: #61dafb;
 }
+.hide{
+  display: none;
+}
+/* .interview-model-interview-timing-button{
+  back
+} */
+
+/* seeker profile Question/Answer tab--------------------------- */
+textarea{
+  resize: none !important;
+}
+/* seeker profile Question/Answer tab--------------------------- */
 
 @keyframes App-logo-spin {
   from {
@@ -31,11 +65,29 @@
     transform: rotate(360deg);
   }
 }
+.employer-job-detail-opening-tab-shadow{
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
 /*------------------------------ Responsive --------------------------------------------------------- */
 
+/* ----------------------------- login ---------------------------- */
+@media screen and (max-width: 767px) {
+.column-reverse-767{
+  display: flex;
+  flex-direction: column-reverse;
+}
+}
+/* ----------------------------- login ---------------------------- */
+
+
+@media screen and (max-width: 500px) {
+.change-password-innerdiv{
+  width: 90%;
+}
+}
 @media screen and (max-width: 425px) {
 .main-center{
-  padding: 0px 5px;
+  padding: 15px 5px;
 }
 }
 /* @media screen and (max-width: 600px) {
@@ -50,11 +102,57 @@
 }
 /* -------------------------------- Dashboard Two --------------------------------------------------- */
 
+
+
+@media screen and (max-width: 1330px) {
+  .applicant-opening-card-scroll{
+    overflow-x: auto;
+    /* overflow-y: hidden; */
+    /* z-index: 99999 !important; */
+    /* position: absolute; */
+  }
+}
+@media screen and (max-width: 500px) {
+  .job-search-model-benefits, .job-listing-model-benefits{
+    flex-direction: column;
+    gap: 15px;
+    align-items: start;
+  }
+  .job-search-model-benefits-dot, .job-listing-model-benefits-dot{
+    display: none;
+  }
+}
+@media screen and (max-width: 600px) {
+  .job-search-preview-header, .job-listing-preview-header{
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+}
+@media screen and (max-width: 550px) {
+  .job-search-filter-input {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 800px) {
+  .job-search-wrapper {
+    padding: 20px 0px;
+  }
+}
+@media screen and (max-width: 1298px) {
+  .jobsearch-filter-span {
+    display: none;
+  }
+  .job-search-search-input, .job-search-location-input{
+    border: 1px solid grey;
+  }
+}
 @media screen and (max-width: 1400px) {
   .dashboardTwo-wrapper {
     flex-direction: column;
   }
 }
+
 @media screen and (max-width: 1400px) {
   .dashboardTwo-left {
     flex-direction: column;
@@ -82,8 +180,9 @@
   {
     flex-direction: column;  
     height: 100%;
+    margin-top: 15px;
   }
-  .job-seeker{
+  .job-seeker, .tipsSection{
     width: 100%;
   }
   .dashboardTwo-company-layoffs,
@@ -246,13 +345,13 @@
   .profile-preview-banner-btn{
     top: 15px;
   }
-  .profile-preview-camera-circle{
+  /* .profile-preview-camera-circle{
     width: 35px;
     height: 35px;
   }
   .profile-preview-camera-circle img{
     width: 20px;
-  }
+  } */
   }
 /* -------------------------------- Profile preview ---------------------------------------------------------- */
 
@@ -343,13 +442,23 @@ text-align: center;
 /* -------------------------------- News ---------------------------------------------------------- */
 
 /* -------------------------------- Job Search ---------------------------------------------------------- */
-@media screen and (max-width: 700px) {
+
+
+
+@media screen and (max-width: 400px) {
+  .joblist-interview-date-time-button{
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1650px) {
 .job-search-table-box,
 .job-listing-table-box
 {
   overflow-x: scroll;
 }
+
 }
+
 
 /* -------------------------------- Job Search ---------------------------------------------------------- */
 
@@ -385,3 +494,437 @@ text-align: center;
 }
 
 /* -------------------------------- Pagination ---------------------------------------------------------- */
+
+/* employer-dashboard */
+
+@media screen and (max-width: 1110px) {
+    .employer-dashboard-section-2{
+      flex-direction: column-reverse;
+    }
+    .employer-dashboard-card-section{
+      margin-left: 0px;
+    }
+    .dashboard-2-2nd-wrapper, .dashboard-two-upper-section-cards{
+      padding: 0px;
+    }
+  
+}
+/* ------------------------------------job-ads--------------------- */
+@media screen and (max-width: 600px) {
+.employer-preview-model-header{
+  flex-direction: column;
+  gap: 15px;
+}
+.employer-job-post-publish-preview{
+  width: 90%;
+}
+}
+/* ------------------------------------job-ads--------------------- */
+
+/* ------------------------------------------------employer-------------------[------------------------------- */
+
+
+/* ----------------------------------------------- Dashboard ---------------------------------------------------- */
+
+@media screen and (max-width: 1200px) {
+.employer-dashboard-layout{
+  flex-direction: column-reverse;
+}
+}
+@media screen and (max-width: 480px) {
+.dashboard-application-name-box{
+  width: 80px;
+}
+}
+
+/* ----------------------------------------------- Dashboard ---------------------------------------------------- */
+/* ----------------------------------------------- job-detail ---------------------------------------------------- */
+@media screen and (max-width: 750px) {
+.job-detail{
+  padding: 0px;
+}
+}
+@media screen and (max-width: 1000px) {
+.job-detail-opening-card-header{
+  flex-direction: column;
+}
+.job-detail-opening-card-header-profile{
+  margin: auto;
+}
+}
+@media screen and (max-width: 1215px) {
+.job-details-interview-modal{
+  width: 60%;
+}
+}
+@media screen and (max-width: 1150px) {
+.job-details-interview-modal{
+  width: 70%;
+}
+}
+@media screen and (max-width: 860px) {
+.job-details-interview-modal{
+  width: 95%;
+}
+}
+@media screen and (max-width: 640px) {
+.interview-component-buttons, .propose-time-date-inputs, .request-availibility-inputs, .fixed-schedule-inputs, .interview-type-buttons, .inperson-inputs, .video-inputs, .phone-inputs, .content-inputs{
+  width: 100%;
+}
+.d-none{
+  display: none;
+}
+}
+
+/* ----------------------------------------------- job-detail ---------------------------------------------------- */
+/* ----------------------------------------------- job-ads ---------------------------------------------------- */
+@media screen and (max-width: 750px) {
+.job-ads{
+  padding: 0px;
+}
+}
+
+/* ----------------------------------------------- job-ads ---------------------------------------------------- */
+/* ----------------------------------------------- job-post ---------------------------------------------------- */
+@media screen and (max-width: 930px) {
+.job-post-publish-overlay-box{
+  width: 80%;
+}
+}
+@media screen and (max-width: 580px) {
+.job-post-publish-overlay-box{
+  width: 90%;
+}
+}
+@media screen and (max-width: 650px) {
+.employer-preview-modal-header{
+  flex-direction: column;
+  gap: 15px;
+}
+}
+
+/* ----------------------------------------------- job-post ---------------------------------------------------- */
+
+.overlay-color{
+  background-color: rgba(0, 0, 0, 0.397);
+}
+
+.employer-overlay-none{
+  display: none;
+}
+
+.jobtypeActive{
+  background-color: #FFCB05;
+  border: 2px solid black;
+}
+.fontbold{
+  font-weight: bold;
+}
+.question-display-none{
+  display: none;
+}
+.disqualifiers-checkbox{
+  border: 2px solid black !important;
+  width: 20px !important;
+  height: 20px !important;
+}
+.disqualifiers-radio{
+  width: 23px !important;
+  height: 23px !important;
+  border-radius: 50% !important;
+}
+
+/* ---------Range style -------------- */
+
+.range-input {
+  -webkit-appearance: none;
+  appearance: none;
+  /* width: 100%; */
+  height: 18px;
+  /* background: #D9D9D9; */
+  background: transparent;
+  outline: none;
+  border-radius: 4px;
+  /* overflow: hidden; */
+}
+
+.range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  background: #FFCB05;
+  cursor: pointer;
+  border-radius: 50% !important;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  /* padding-bottom: 5px; */
+}
+
+.range-input::-moz-range-thumb {
+  width: 15px;
+  height: 15px;
+  background: #FFCB05;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.range-input::-ms-thumb {
+  width: 15px;
+  height: 15px;
+  background: #FFCB05;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0);
+}
+
+.range-input::-webkit-slider-runnable-track {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: transparent;
+  /* opacity: 0.1; */
+}
+
+.range-input::-moz-range-track {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 4px;
+}
+
+.range-input::-ms-track {
+  -webkit-appearance: none !important;
+  appearance: none !important;
+  cursor: pointer;
+  border-color: transparent;
+  color: transparent;
+}
+/* ---------Range style -------------- */
+
+/* ------------------------------------------------- jobPost Responsive --------------------------------------------- */
+@media screen and (max-width: 1650px) {
+
+  /* .font-1600{
+    font-size: 10px !important;
+  } */
+
+
+
+}
+
+@media screen and (max-width: 1450px) {
+
+  .range-wrapper{
+    flex-direction: column;
+  }
+  .range-right,.range-left{
+    width: 100%;
+  }
+ 
+  
+
+}
+@media screen and (max-width: 767px) {
+  .padding-remove{
+    padding: 0px 0px;
+  }
+
+}
+@media screen and (max-width: 900px) {
+  .switch-wrapper{
+    flex-direction: column;
+  }
+  .switch-right, .switch-left{
+    width: 100%;
+  }
+  .switch-text-1000{
+    font-size: 18px;
+  }
+  .switch-text-900{
+    font-size: 16px;
+  }
+  .add-skill-input{
+    width: 100%;
+  }
+  .add-skill-wrapper{
+    margin-top: 10px;
+  }
+ 
+  .range-input{
+    width: 180px;
+
+  }
+  .range-input-wrapper{
+    width: 180px;
+  }
+  .range-wrapper-main{
+    width: 180px;
+  }
+  .disqualifiers-wrapper{
+    padding-left: 0px;
+  }
+  .radio-input-wrapper{
+    flex-direction: column;
+    gap: 10px;
+  }
+  .radio-input-right.radio-input-left,.radio-input-left-select,.radio-input-right-select{
+    width: 100% !important;
+  }
+  .radio-input-left,.radio-input-right{
+    width: 100%;
+  }
+  .radio-input-right-select-bottom{
+    width: 100%;
+  }
+
+  .radio-display-none{
+    display: none;
+  }
+  .radio-padding-left{
+    padding-left: 30px;
+  }
+  .disqualifiers-checkbox{
+    height: 13px !important;
+    width: 13px !important;
+  }
+  
+  .height{
+    max-height: 30px !important;
+  }
+  }
+  @media screen and (max-width: 768px) {
+    .job-post-wrapper{
+      margin: 0px !important;
+    }
+    .skilladd-section{
+      width: 100%;
+    }
+    }
+  @media screen and (max-width: 767px) {
+    .range-wrapper{
+      padding: 0px 0px;
+    }
+  }
+  @media screen and (max-width: 425px) {
+    .range-input{
+      width: 150px;
+    }
+    .range-input-wrapper{
+      width: 150px;
+    }
+    .range-wrapper-main{
+      width: 150px;
+    }
+  }
+ 
+  
+
+
+
+/* ------------------------------------------------- jobPost Responsive --------------------------------------------- */
+/* ------------------------------------------------- company-profile --------------------------------------------- */
+@media screen and (max-width: 900px) {
+  .company-profile-img{
+    height: 100px;
+    margin: 20px 0px;
+  }
+}
+@media screen and (max-width: 768px) {
+.company-profile-second-wrapper{
+  padding: 0px !important;
+}
+}
+
+/* ------------------------------------------------- company-profile --------------------------------------------- */
+@media screen and (max-width: 768px) {
+  .asas{
+    width: 100%;
+  }
+  .pay-input-text-display-none{
+    display: none;
+  }
+  .pay-scroll{
+    height: 80vh;
+    overflow: scroll;
+  }
+  
+  }
+  /* ------------------ pay component------------------ */
+  @media screen and (max-width: 768px) {
+  .question-inner-div{
+    width: 100% !important;
+    height: 100vh !important;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    border-radius: 0px;
+  }
+  /* .dd{
+    min-height: 5px;
+  } */
+}
+
+  /* ------------------ pay component------------------ */
+
+
+
+  /* ----------------- */
+  /* @media screen and (max-width: 768px){
+    td{
+        display: block;
+        padding: 10px 0;
+        width: 100% !important;
+    }
+    tr{
+      width: 100% !important;
+    }
+    th{
+      display: none;
+  }
+  } */
+
+  /* -----------------table-------------------- */
+  tr:hover {
+    /* Remove or ensure no filter causing blur */
+    /* filter: none; */
+    /* Remove or ensure no transform causing blur */
+    /* transform: 0; */
+    /* transition: 0.2s; */
+    /* scale: 1.01; */
+    /* Remove or ensure no opacity causing blur */
+    /* opacity: 1; */
+}
+  /* -----------------table-------------------- */
+
+  .display-nones{
+    /* transform: translateY(-100%); */
+    /* opacity: 0; */
+    /* transition: 0.5s; */
+    /* background-color: red !important; */
+    display: none;
+    /* z-index: -10; */
+  }
+
+
+ /* table{
+  table-layout: fixed;
+ } */
+  .option-height {
+    margin: 20px !important;
+    line-height: 30px !important;
+    height: 30px !important;
+    padding: 40pxs;
+  }
+  .ppp{
+    max-height: 5px !important;
+  }
+
+  @media screen and (max-width: 1500px) {
+    .table-text{
+      font-size: 13px;
+
+    }
+  }

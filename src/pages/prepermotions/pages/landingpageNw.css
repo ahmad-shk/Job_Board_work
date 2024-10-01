@@ -1,0 +1,124 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.outer_cont {
+    height: 100%;
+    background-color: #FEF5E6;
+    display: flex;
+    justify-content: center;
+
+}
+
+.inner_cont {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+
+}
+
+
+.section2 {
+    /* width: 55%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.section2 h1 {
+    text-align: center;
+    color: #EF941F;
+    margin-top: 20px;
+}
+
+.section2 p {
+    padding: 10px 0;
+    text-align: center;
+    font-size: 80%;
+    font-weight: 600;
+    margin-bottom: 10%;
+}
+
+.email_input {
+    width: 100%;
+    height: 50px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    /* background-color: black; */
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+
+}
+
+.email_input input {
+    width: 80%;
+    height: 50px;
+    background-color: #FFFFFF;
+    padding: 0 0 0 4%;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border: none;
+    outline: none;
+
+}
+
+.email_input input::placeholder {
+    color: #BEBEBE;
+}
+
+.email_input button {
+    /* min-width: 150px; */
+    width: 20%;
+    height: 50px;
+    border: none;
+    outline: none;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    background-color: #EF941F;
+    color: white;
+}
+
+/* @media screen and (max-width: 650px) {
+
+    .logo-align {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+} */
+
+.loading-indicator:before {
+    content: '';
+    background: #00000080;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+  
+  .loading-indicator:after {
+    content: ' ';
+    position: fixed;
+    top: 40%;
+    left: 45%;
+    z-index: 10010;
+    color:white;
+    text-align:center;
+    font-weight:bold;
+    font-size:1.2rem;        
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #F5CB16; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}

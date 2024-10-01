@@ -4,8 +4,14 @@
 
 
 *:not(i) {
-  font-family: "Figtree", sans-serif;
+  font-family: "poppins", sans-serif;
 }
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 
 .loading-indicator:before {
     content: '';
@@ -29,7 +35,7 @@
     font-weight:bold;
     font-size:1.2rem;        
     border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #0474bf; /* Blue */
+    border-top: 16px solid #F5CB16; /* Blue */
     border-radius: 50%;
     width: 120px;
     height: 120px;
@@ -50,7 +56,7 @@ html[data-theme='bumblebee'] {
 
 .site-logo {background: #fff !important;}
 
-.menu-link a {border-radius: 0px;}
+/* .menu-link a {border-radius: 0px;} */
 /* .menu-link {border: 2px solid black;} */
 
 /* onclick--------------------------------------------------- */
@@ -72,23 +78,58 @@ html[data-theme='bumblebee'] {
 } */
 
 /* __________ */
-.sidebar-button-p-m{
+/* .sidebar-button-p-m{
   padding: 0;
   margin: 5px 0;
+} */
+
+/* HTML: <div class="loader"></div> */
+
+.loaderrr {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: 
+    radial-gradient(farthest-side,#ffa516 94%,#0000) top/8px 8px no-repeat,
+    conic-gradient(#0000 30%,#ffa516);
+  -webkit-mask: radial-gradient(farthest-side,#0000 calc(100% - 8px),#000 0);
+  animation: l13 1s infinite linear;
 }
+@keyframes l13{ 
+  100%{transform: rotate(1turn)}
+}
+
 .sidebar-button-shadow
 {
   filter: drop-shadow(3px 3px 2px #0000001A);
+  /* background-color: #0000005e; */
 
 }
+.left-shadow{
+  /* -webkit-box-shadow: rgba(0, 0, 0, 0.15) -5px 0px 8px -4px; */
+  /* -moz-box-shadow: rgba(0, 0, 0, 0.15) -5px 0px 8px -4px; */
+  box-shadow: inset rgba(0, 0, 0, 0.15) 5px 0px 5px -4px;
+  /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+}
 .under-shadow{
-  filter: drop-shadow(3px 3px 2px  #0000001A);
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, 
+                      rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, 
+                   rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, 
+              rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  /* box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px; */
+
+}
+
+.img-shadow{
+  filter: drop-shadow(10px 10px 20px  #0000001A);
 
 }
 .sidebar-button-icon-p-m{
-  border-top-left-radius:0px ;
-  border-bottom-left-radius: 0px;
-  padding: 10px;
+  /* border-top-left-radius:0px ; */
+  /* border-bottom-left-radius: 0px; */
+  padding: 5px;
 }
 
 .hover-effect:hover{
@@ -96,13 +137,19 @@ html[data-theme='bumblebee'] {
 }
 
 /* ---------- */
-
+.textbg{
+  color:black;
+  background-color: #FFCB05;
+}
 
 /* .border-right {border-right: 1px solid #E3E3E3;} */
 
 input[type="radio"],
 input[type="checkbox"] {
-  accent-color: var(--color-primary); border: 0 !important; outline: none; box-shadow: none !important; width: 18px;
+  /* #9c8a45 */
+  /* accent-color: var(--color-primary);  */
+  accent-color: #9c8a45; 
+  border: 0 !important; outline: none; box-shadow: none !important; width: 18px;
 }
 
 input.switch {width: 40px;}
@@ -133,4 +180,53 @@ input.switch {width: 40px;}
 /* ------------------------Scrollbar----------------------------------------------------------------- */
 
 
+/* input[type='range'] {
+  background-color: red;
+  color: red;
+} */
 
+
+/* color picker css //  */
+
+.bg-blue-100{background-color: rgb(255,203,5,0.3);} 
+.bg-blue-500{ background-color: #F5CB16 !important;}
+.bg-blue-500:hover{background-color: #ffcb05 !important;}
+.text-gray-400{display: none;}
+
+/* color picker css //  */
+
+.range-slider{
+  appearance: none;
+  height: 30px;
+  width: 100%;
+  background-color: transparent;
+}
+
+.ReactFlagsSelect-module_selectBtn__19wW7{
+  height: 46px !important;
+  border-radius: 8px !important;
+  border: 1px solid #D8D8D8 !important;
+}
+
+/* ------------------- */
+
+ .range-slider{
+  appearance: none;
+  background-color: transparent;
+  height: 20px;
+ } 
+
+
+
+/* ------------------- */
+
+.action-none{
+  display: none;
+}
+
+.aaaa{
+  opacity: 0;
+}
+.bbbb:hover ~ .aaaa{
+  opacity: 1;
+}

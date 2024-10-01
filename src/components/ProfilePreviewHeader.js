@@ -23,8 +23,6 @@ console.log("---->",)
 
   const handleFileChange = async (e, key) => {
     if (e.target.files) {
-      
-      
       if (key === "photo") {
         setLoading(true)
         let res = await singleFileUpload(e.target.files[0])
@@ -108,12 +106,11 @@ console.log("---->",)
           <div className="header-profile-left h-[] w-[60%] bg-[] flex items-end relative">
             <div className="profile-circle h-[200px] w-[200px] bg-[#e5ebfe] border-4 border-[white] rounded-[50%] bg-cover bg-no-repeat bg-center flex relative" style={{ backgroundImage: profilePagesData?.photo === "" ? "url(/assets/images/connection-profile.svg)" : `url(${profilePagesData.photo})` }}>
               <span className='profile-preview-camera-circle w-[45px] h-[45px] rounded-[50%] border border-[3px] border-[black] bg-[#FFFFFF] absolute cursor-pointer flex justify-center items-center ' style={{ right: '-10px', bottom: '30px' }}>
-                
                 {loading ?<>
                   <span className="flex gap-[10px] justify-center items-center">
                     <span className="loading"></span>
                   </span>
-                  </>:<img src="assets/images/profile-camera-icon.svg" onClick={() => handleClick()} alt="" className='w-[28px]  ' />
+                  </>:<img src="/assets/images/profile-camera-icon.svg" onClick={() => handleClick()} alt="" className='w-[28px]  ' />
                 }
               </span>
             </div>{profilePagesData?.personalInformation?.personalInformation?.firstName&&profilePagesData?.personalInformation?.personalInformation?.firstName?<>

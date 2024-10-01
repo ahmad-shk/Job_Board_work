@@ -38,7 +38,7 @@ export const profileSlice = createSlice({
 			state.isLoading = true
 		},
 		[getProfileData.fulfilled]: (state, action) => {
-			state.profilePagesData = action.payload.data
+			state.profilePagesData = action.payload?.data
 			state.isLoading = false
 		},
 		[getProfileData.rejected]: state => {
@@ -49,7 +49,7 @@ export const profileSlice = createSlice({
 			state.isLoading = true
 		},
 		[analyticsData.fulfilled]: (state, action) => {
-			state.profileAnalyticsData = action.payload.data
+			state.profileAnalyticsData = action.payload?.data
 			state.isLoading = false
 		},
 		[analyticsData.rejected]: state => {
@@ -60,7 +60,7 @@ export const profileSlice = createSlice({
 			state.isLoading = true
 		},
 		[postProfileData.fulfilled]: (state, action) => {
-			state.profilePagesData = action.payload.data
+			state.profilePagesData = action.payload?.data
 			state.isLoading = false
 		},
 		[postProfileData.rejected]: state => {
